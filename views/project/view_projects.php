@@ -2,8 +2,9 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\grid\ActionColumn;
 
-$this->title = 'Projects';
+$this->title = 'Project Dashboard';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -18,6 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <th>Name</th>
             <th>Description</th>
             <th>Owner</th>
+            <th>Actions</th> <!-- Add this column -->
         </tr>
     </thead>
     <tbody>
@@ -27,6 +29,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 <td><?= $project->project_name ?></td>
                 <td><?= $project->project_description ?></td>
                 <td><?= $project->project_owner ?></td>
+                <td>
+                    <?= Html::a('<i class="fas fa-pencil-alt"></i>', ['project/update', 'id' => $project->id], ['title' => 'Edit']) ?>
+                    <?= Html::a('<i class="fa fa-trash"></i>', ['project/delete', 'id' => $project->id], ['title' => 'Delete', 'data-confirm' => 'Are you sure you want to delete this project?', 'data-method' => 'post']) ?>
+                </td>
             </tr>
         <?php endforeach; ?>
     </tbody>

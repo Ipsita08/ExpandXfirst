@@ -24,6 +24,10 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <html lang="<?= Yii::$app->language ?>" class="h-100">
 <head>
     <title><?= Html::encode($this->title) ?></title>
+    <?= Html::cssFile('@web/css/bootstrap.min.css') ?>
+    <?= Html::cssFile('@web/css/font-awesome.min.css') ?>
+    <?= Html::cssFile('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css') ?>
+
     <?php $this->head() ?>
 </head>
 <body class="d-flex flex-column h-100">
