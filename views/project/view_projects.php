@@ -11,6 +11,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <h1><?= Html::encode($this->title) ?></h1>
 
 <?= Html::a('Create Project', ['project/create-project'], ['class' => 'btn btn-primary']) ?>
+ <!-- Update the link URL -->
 
 <table class="table">
     <thead>

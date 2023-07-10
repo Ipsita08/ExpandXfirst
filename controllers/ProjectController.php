@@ -8,18 +8,20 @@ use yii\web\Controller;
 class ProjectController extends Controller
 {
     public function actionCreateProject()
-    {
+{
+    $model = new ProjectModel();
+
+    if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        Yii::$app->session->setFlash('success', 'Project Created Successfully');
+        // Clear form fields
         $model = new ProjectModel();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('success', 'Project Created Successfully');
-            
-        }
-
-        return $this->render('create_project', [
-            'model' => $model,
-        ]);
     }
+
+    return $this->render('create_project', [
+        'model' => $model,
+    ]);
+}
+
 
     public function actionList()
     {
