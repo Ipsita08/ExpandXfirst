@@ -38,17 +38,26 @@ class RoleController extends Controller
     public function actionUpdatePermissions($id)
     {
         $role = Role::findOne($id);
-
+    
         if ($role->load(Yii::$app->request->post()) && $role->validate()) {
             $permissions = Yii::$app->request->post('Role');
             $role->savePermissions($permissions);
-            return $this->redirect(['dashboard']);
+            // Retrieve the updated role from the database
+            $role = Role::findOne($id);
+            return $this->redirect(['view-permissions', 'id' => $role->id]);
         }
-
+    
         return $this->render('update-permissions', [
             'role' => $role,
         ]);
     }
+    
+
+
+
+
+
+
 
     public function actionDelete($id)
     {
@@ -69,15 +78,23 @@ class RoleController extends Controller
 
         return $role;
     }
-    public function actionViewPermissions()
-    {
-        $roles = Role::find()->all();
-    
-        return $this->render('view-permissions', [
-            'roles' => $roles,
-        ]);
-    }
+    public function actionViewPermissions($id)
+{
+    $role = $this->findRole($id);
+    $roles = Role::find()->all();
+
+    return $this->render('view-permissions', [
+        'role' => $role,
+        'roles' => $roles,
+    ]);
+}
+
+}
+
+
+
+
     
     
    
-}
+
