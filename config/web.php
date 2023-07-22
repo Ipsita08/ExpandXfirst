@@ -51,12 +51,15 @@ $config = [
                 'role/add' => 'role/add',
                 'role/update-permissions/<id:\d+>' => 'role/update-permissions',
                 'role/delete/<id:\d+>' => 'role/delete',
+                'member/index' => 'member/index',
             ],
         ],
         
     ],
+
     'params' => $params,
 ];
+
 
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment

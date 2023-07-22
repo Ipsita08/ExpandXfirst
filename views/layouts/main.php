@@ -44,7 +44,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         'options' => ['class' => 'navbar-nav'],
         'items' => [
            
-           
+            ['label' => 'Manage Members', 'url' => ['/member/index']],
             ['label' =>'Projects','url' => ['project/view-projects'], ['class' => 'btn btn-primary']],
             
             ['label' => 'Roles', 'url' => ['/role/dashboard']],
